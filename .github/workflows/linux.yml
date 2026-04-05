@@ -71,7 +71,7 @@ jobs:
       - name: Install Haxe dependencies
         run: |
           haxelib setup ~/haxelib
-          haxelib git hxcpp https://github.com/ShadowEngineTeam/hxcpp --quiet
+          haxelib git hxcpp https://github.com/ShadowEngineTeam/hxcpp f946cbf307f62cdb77aaa772c9e9e524d2024c25 --quiet
           haxelib git format https://github.com/HaxeFoundation/format 9d69fb342d030fa120d2deafafbbffad248332b8 --quiet
           haxelib git hxp https://github.com/openfl/hxp 47ef5ae6569cb0961761a2fbb416694df067124c --quiet
       - name: Enable HXCPP compile cache
