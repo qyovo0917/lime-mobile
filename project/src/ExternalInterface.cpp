@@ -1091,10 +1091,34 @@ namespace lime {
 	}
 
 	void lime_file_dialog_browse_select_multiple_ios(int id) {
-		#ifdef IPHONE
-		FileDialog::BrowseSelectMultiple(id);
-		#endif
-	}
+        #ifdef IPHONE
+        FileDialog::BrowseSelectMultiple(id);
+        #endif
+    }
+
+    void lime_file_dialog_save_ios(int id, HxString path) {
+        #ifdef IPHONE
+        FileDialog::Save(id, hxs_utf8(path, nullptr));
+        #endif
+    }
+
+    HL_PRIM void HL_NAME(hl_file_dialog_save_ios)(int id, hl_vstring* path) {
+        #ifdef IPHONE
+        FileDialog::Save(id, path ? (char*)hl_to_utf8((const uchar*)path->bytes) : nullptr);
+        #endif
+    }
+
+    void lime_file_dialog_browse_save_ios(int id, HxString path) {
+        #ifdef IPHONE
+        FileDialog::BrowseSave(id, hxs_utf8(path, nullptr));
+        #endif
+    }
+
+    HL_PRIM void HL_NAME(hl_file_dialog_browse_save_ios)(int id, hl_vstring* path) {
+        #ifdef IPHONE
+        FileDialog::BrowseSave(id, path ? (char*)hl_to_utf8((const uchar*)path->bytes) : nullptr);
+        #endif
+    }
 
 
 	value lime_file_watcher_create (value callback) {
