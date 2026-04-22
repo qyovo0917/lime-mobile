@@ -4346,8 +4346,10 @@ namespace lime {
 	DEFINE_PRIME2v (lime_file_dialog_manager_register_ios);
 	DEFINE_PRIME0 (lime_file_dialog_create_ios);
 	DEFINE_PRIME1v (lime_file_dialog_open_ios);
-	DEFINE_PRIME1v (lime_file_dialog_browse_select_ios);
-	DEFINE_PRIME1v (lime_file_dialog_browse_select_multiple_ios);
+    DEFINE_PRIME1v (lime_file_dialog_browse_select_ios);
+    DEFINE_PRIME1v (lime_file_dialog_browse_select_multiple_ios);
+    DEFINE_PRIME2v (lime_file_dialog_save_ios);
+    DEFINE_PRIME2v (lime_file_dialog_browse_save_ios);
 	DEFINE_PRIME1 (lime_file_watcher_create);
 	DEFINE_PRIME3 (lime_file_watcher_add_directory);
 	DEFINE_PRIME2v (lime_file_watcher_remove_directory);
@@ -4545,9 +4547,11 @@ namespace lime {
 	DEFINE_HL_PRIM (_TBYTES, hl_deflate_decompress, _TBYTES _TBYTES);
 	DEFINE_HL_PRIM (_VOID, hl_drop_event_manager_register, _FUN(_VOID, _NO_ARG) _TDROP_EVENT);
 	DEFINE_HL_PRIM (_BYTES, hl_file_dialog_open_directory, _STRING _STRING _STRING);
-	DEFINE_HL_PRIM (_BYTES, hl_file_dialog_open_file, _STRING _STRING _STRING);
-	DEFINE_HL_PRIM (_ARR, hl_file_dialog_open_files, _STRING _STRING _STRING);
-	DEFINE_HL_PRIM (_BYTES, hl_file_dialog_save_file, _STRING _STRING _STRING);
+    DEFINE_HL_PRIM (_BYTES, hl_file_dialog_open_file, _STRING _STRING _STRING);
+    DEFINE_HL_PRIM (_ARR, hl_file_dialog_open_files, _STRING _STRING _STRING);
+    DEFINE_HL_PRIM (_BYTES, hl_file_dialog_save_file, _STRING _STRING _STRING);
+    DEFINE_HL_PRIM (_VOID, hl_file_dialog_save_ios, _I32 _STRING);
+    DEFINE_HL_PRIM (_VOID, hl_file_dialog_browse_save_ios, _I32 _STRING);
 	DEFINE_HL_PRIM (_TCFFIPOINTER, hl_file_watcher_create, _DYN);
 	DEFINE_HL_PRIM (_I32, hl_file_watcher_add_directory, _TCFFIPOINTER _STRING _BOOL);
 	DEFINE_HL_PRIM (_VOID, hl_file_watcher_remove_directory, _TCFFIPOINTER _I32);
