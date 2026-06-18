@@ -1252,7 +1252,7 @@ public class SDLActivity extends Activity implements View.OnSystemUiVisibilityCh
             params.topMargin = y;
 
             if (mTextEdit == null) {
-                mTextEdit = new DummyEdit(SDL.getContext());
+                mTextEdit = new RealTextInput(SDL.getContext());
 
                 mLayout.addView(mTextEdit, params);
             } else {
@@ -2276,12 +2276,14 @@ class SDLInputConnection extends BaseInputConnection {
     }
 
     @Override
-    public boolean commitText(CharSequence text, int newCursorPosition) {
+public boolean commitText(CharSequence text, int newCursorPosition) {
     String str = text.toString();
-    SDLActivity.onNativeKeyboardInputText(str);  // 直接发送完整字符串
-    mCommittedText = mCommittedText + text;
-    return true;
-    }
+    // SDL原生提交文字
+    SDLInputConnection.nativeCommitText(str, newCursorPosition);
+    // 同步给游戏层输入事件
+    SDLActivity.onNativeKeyboardInputText(str);
+    return super.commitText(text, newCursorPosition);
+}
             }
             nativeGenerateScancodeForUnichar(c);
         }
