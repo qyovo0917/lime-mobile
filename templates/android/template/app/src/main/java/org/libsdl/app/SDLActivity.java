@@ -2277,13 +2277,11 @@ class SDLInputConnection extends BaseInputConnection {
 
     @Override
     public boolean commitText(CharSequence text, int newCursorPosition) {
-
-        for (int i = 0; i < text.length(); i++) {
-            char c = text.charAt(i);
-            if (c == '\n') {
-                if (SDLActivity.onNativeSoftReturnKey()) {
-                    return true;
-                }
+    String str = text.toString();
+    SDLActivity.onNativeKeyboardInputText(str);  // 直接发送完整字符串
+    mCommittedText = mCommittedText + text;
+    return true;
+    }
             }
             nativeGenerateScancodeForUnichar(c);
         }
